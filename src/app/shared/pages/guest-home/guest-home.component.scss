@@ -1,0 +1,294 @@
+@import '../../../../themes/colors.scss';
+#bannerSection {
+    // min-height: 570px;
+    // text-align: center;
+    // color: #fff;
+    // background-size: auto 100%;
+    background-position: center;
+    position: relative;
+    margin-bottom: 23px;
+    .eachBanner {
+        background: #4A73E8;
+        position: relative;
+        img {
+            width: 100%;
+        }
+        .txtCont {
+            position: absolute;
+            left: 61px;
+            top: 87px;
+            color: #fff;
+            h1 {
+                font-size: 35px;
+                font-weight: 700;
+                margin-bottom: 4px;
+            }
+            h3 {
+                font-size: 18px;
+                font-weight: normal;
+            }
+        }
+    }
+    .carouselIndicators {
+        bottom: 48px;
+        justify-content: flex-start;
+        width: fit-content;
+        left: 61px;
+        .indicatorItem {
+            background: #fff;
+            border: none;
+            width: 12px;
+            height: 12px;
+            min-width: 12px;
+        }
+        .indicatorItem.cusActive {
+            background: $primary;
+            transform: scale(0.8);
+        }
+    }
+    .centerCont {
+        padding: 0 15px;
+        max-width: 1000px;
+        width: 100%;
+        position: relative;
+        z-index: 3;
+    }
+    h1 {
+        font-weight: bold;
+        font-size: 50px;
+        margin-bottom: 7px;
+    }
+    h3 {
+        font-size: 28px;
+        margin-bottom: 19px;
+    }
+    .inputGroup {
+        display: flex;
+        height: 50px;
+        background: #fff;
+        margin-bottom: 15px;
+        border-radius: 50px;
+        .clickable {
+            height: 100%;
+            color: $primVariant1;
+            min-width: 217px;
+            padding: 0 35px;
+            position: relative;
+        }
+        .clickable::after {
+            position: absolute;
+            top: 50%;
+            right: 0;
+            border-right: 1px solid $primVariant4;
+            height: 50%;
+            transform: translateY(-50%);
+            content: '';
+        }
+        .dropped {
+            margin-top: 13.3px;
+            box-shadow: 0 0 10px #2626265b;
+            .divider {
+                border-top: 1px solid $primVariant4;
+            }
+            .dropItem {
+                padding: 7px 15px 0;
+                margin-bottom: 7px;
+                display: flex;
+                color: $primVariant1;
+                align-items: center;
+                cursor: pointer;
+                .premium {
+                    color: $secVariant5;
+                }
+                .cusRadio {
+                    height: 18px;
+                    width: 18px;
+                    min-width: 18px;
+                    border-radius: 50%;
+                    border: 1px solid $primVariant1;
+                    margin-right: 19px;
+                }
+            }
+            .dropItem.dropActive {
+                .cusRadio {
+                    border-width: 4px;
+                }
+            }
+        }
+        .dropped::before {
+            width: 10px;
+            height: 10px;
+            position: absolute;
+            top: 0;
+            left: 50%;
+            background: #fff;
+            content: '';
+            transform: translate(-50%, -50%) rotate(45deg);
+        }
+        input {
+            height: unset;
+            border: none;
+            padding: 10px 31px;
+        }
+        input::placeholder {
+            color: $primVariant4;
+        }
+        input:focus {
+            box-shadow: none;
+        }
+         ::ng-deep .cusDropdown {
+            height: 100%;
+        }
+        button {
+            display: flex;
+            align-items: center;
+            padding: 0 23px;
+        }
+    }
+    p {
+        margin-bottom: 35px;
+        font-size: 19px;
+    }
+    .btnCont {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(160px, 181px));
+        gap: 24px;
+        justify-content: center;
+    }
+}
+
+#bannerSection::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #00000044;
+    content: '';
+}
+
+.tabNav {
+    border-bottom: 1px solid $primVariant4;
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+    gap: 25px;
+    margin-bottom: 13px;
+    justify-content: center;
+    a {
+        color: #26262680;
+        text-decoration: none;
+        padding: 7px 0;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 1.1;
+    }
+    a.tabActive {
+        color: $primVariant1;
+        border-bottom: 2px solid #000000;
+    }
+}
+
+.tabBody {
+    padding: 0 20px 50px;
+}
+
+.viewMoreCont {
+    margin-top: 50px;
+    a {
+        margin: auto;
+    }
+}
+
+#popularSearches {
+    padding: 50px 0;
+    .cusContainer {
+        max-width: 1000px;
+        margin: auto;
+    }
+    a {
+        color: $primVariant1;
+    }
+    .headTitle {
+        font-size: 20px;
+        margin-bottom: 44px;
+    }
+    .gridCont {
+        columns: 190px 4;
+        padding-left: 18px;
+        li {
+            margin-bottom: 8px;
+        }
+        a {
+            font-size: 16px;
+        }
+    }
+    .linkCont {
+        font-weight: 600;
+        margin-top: 30px;
+        font-size: 20px;
+    }
+}
+
+#discoverCollections {
+    background-color: #f2f2f2;
+    padding: 50px 0;
+    color: $primVariant1;
+    font-size: 14px;
+    .headTitle {
+        margin-bottom: 18px;
+        font-size: 20px;
+    }
+    p.txtDesc {
+        margin-bottom: 18px;
+    }
+    .gridFlexParent {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 25px;
+    }
+    .eachItem {
+        .imgGridCont {
+            display: grid;
+            width: 100%;
+            margin-bottom: 20px;
+            height: 248px;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: repeat(2, auto);
+            // grid-auto-rows: 50%;
+            grid-auto-flow: column;
+            gap: 1px;
+            img {
+                object-fit: cover;
+                width: 100%;
+                height: 100%;
+            }
+            .eachImgCont {
+                overflow: hidden;
+            }
+            .eachImgCont:last-child {
+                grid-row: span 2;
+                grid-column: 2 / 3;
+            }
+        }
+        .txtCont {
+            a {
+                color: $primVariant1;
+            }
+            .title {
+                overflow: hidden;
+                width: 100%;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                font-size: 16px;
+                margin-bottom: 4px;
+            }
+            .resource {
+                opacity: 0.5;
+                font-size: 12px;
+            }
+        }
+    }
+}
+
+// .gridSystem {
+// }

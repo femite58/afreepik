@@ -1,0 +1,146 @@
+<header>
+    <div class="topPart">
+        <div class="bodyCont h-100">
+            <nav class="d-flex h-100">
+                <a routerLink="/" class="logo">
+                    <img src="assets/images/logo.svg" alt="" />
+                </a>
+                <div class="searchBtnPar">
+                    <div class="searchCont">
+                        <div class="searchInner" [class.searchActive]="keyword?.length > 1">
+                            <input [(ngModel)]="keyword" type="text" (keyup)="checkInput($event)" placeholder="Search all resources" />
+                            <button (click)="keyword?.length > 1 ? search() : null"><i class="icons icon-magnifier"></i></button>
+                        </div>
+                        <div *ngIf="showSearch" class="searchRes">
+                            <a *ngFor="let search of searchRes" (click)="showSearch = false" routerLink="/search/{{ search?.slug }}">{{
+                                search?.keyword }}</a>
+                        </div>
+                    </div>
+                    <div class="rightNavCont">
+                        <a routerLink="/">Sell your content</a>
+                        <a routerLink="/" class="pricing">Pricing</a>
+                        <a *ngIf="!auth" href="javascript:void(0)" class="authBtn" (click)="openModal('login')">Login</a>
+                        <a *ngIf="!auth" href="javascript:void(0)" class="authBtn signup" (click)="openModal('register')">Sign
+                            up</a>
+                        <div *ngIf="auth" class="messageDropdwn">
+                            <app-dropdown>
+                                <a class="clickable" href="javascript:void(0)">
+                                    <svg width="19" height="14" viewBox="0 0 19 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M16.5682 0H1.59657C1.35082 0 1.12075 0.0611356 0.912598 0.161903L9.04689 8.39273L10.8701 6.6198C10.8701 6.6198 10.8702 6.61962 10.8702 6.61955C10.8703 6.61948 10.8704 6.61941 10.8704 6.61941L17.2524 0.162047C17.0442 0.0612074 16.814 0 16.5682 0Z"
+                                            fill="#191919" />
+                                        <path
+                                            d="M18.0046 0.924561L11.9988 7.00128L18.0043 13.0781C18.1039 12.8675 18.1643 12.6347 18.1643 12.386V1.6164C18.1643 1.36787 18.1041 1.13511 18.0046 0.924561Z"
+                                            fill="#191919" />
+                                        <path
+                                            d="M0.160005 0.924561C0.0604186 1.13518 0 1.36798 0 1.61665V12.3863C0 12.6348 0.0603476 12.8676 0.159863 13.0782L6.16564 7.00146L0.160005 0.924561Z"
+                                            fill="#191919" />
+                                        <path
+                                            d="M11.2468 7.76179L9.42342 9.53494C9.31947 9.64012 9.18331 9.69271 9.04718 9.69271C8.91105 9.69271 8.77485 9.64012 8.67094 9.53494L6.91848 7.76172L0.912598 13.8385C1.12078 13.9393 1.351 14.0005 1.59682 14.0005H16.5684C16.8142 14.0005 17.0442 13.9394 17.2524 13.8386L11.2468 7.76179Z"
+                                            fill="#191919" />
+                                    </svg>
+                                </a>
+                                <div class="dropped">
+                                    <div class="messageHead">
+                                        <h4>MESSAGES</h4>
+                                        <div class="actionLinks">
+                                            <a routerLink="/">Compose</a>
+                                            <a routerLink="/">View All</a>
+                                        </div>
+                                    </div>
+                                    <div class="messageBody">
+                                        <div class="emptyMsg">No message in your inbox</div>
+                                    </div>
+                                </div>
+                            </app-dropdown>
+                        </div>
+                        <div *ngIf="auth" class="notificationDropdwn">
+                            <app-dropdown>
+                                <a class="clickable" href="javascript:void(0)">
+                                    <svg width="13" height="17" viewBox="0 0 13 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M6.5 17C5.60304 16.9954 4.87575 16.2383 4.86688 15.3H8.11687C8.11859 15.5273 8.07717 15.7526 7.995 15.963C7.78185 16.4747 7.34647 16.8479 6.825 16.966H6.82094H6.80875H6.79413H6.78681C6.69241 16.9866 6.5964 16.9979 6.5 17ZM13 14.45H0V12.75L1.625 11.9V7.225C1.5822 6.02575 1.84107 4.83576 2.37575 3.774C2.90797 2.78929 3.81769 2.09005 4.875 1.853V0H8.125V1.853C10.2204 2.3749 11.375 4.2823 11.375 7.225V11.9L13 12.75V14.45Z"
+                                            fill="#191919" />
+                                    </svg>
+                                </a>
+                                <div class="dropped">
+                                    <div class="notifyHead">
+                                        <h4>NOTIFICATION</h4>
+                                    </div>
+                                    <div class="notifyBody">
+                                        <!-- <div class="emptyNotify">No message in your inbox</div> -->
+                                        <div *ngFor="let not of notifications" class="eachNotification">
+                                            <div class="imgCont">
+                                                <img src="{{ not?.photo }}" alt="{{ not?.username }}" />
+                                            </div>
+                                            <div class="txtCont">
+                                                <div>
+                                                    <a routerLink="/">{{ not?.username }}</a> {{ not?.action }}
+                                                </div>
+                                                <i>{{not?.created_at | timeAgo}}</i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </app-dropdown>
+                        </div>
+                        <div *ngIf="auth" class="profileDropdwn">
+                            <app-dropdown>
+                                <a class="clickable" href="javascript:void(0)">
+                                    <img src="{{auth?.photo}}" alt="{{auth?.username}}">
+                                </a>
+                                <div class="dropped">
+                                    <div class="profileHead">
+                                        <div class="imgCont">
+                                            <img src="{{auth?.photo}}" alt="{{auth?.username}}">
+                                        </div>
+                                        <div class="txtCont">
+                                            <h4>{{auth?.username}}</h4>
+                                            <p>{{auth?.email}}</p>
+                                            <a routerLink="/user/profile">View Profile</a>
+                                        </div>
+                                    </div>
+                                    <div class="profileBody">
+                                        <div class="eachSection">
+                                            <a routerLink="/user/favorites">Favourites</a>
+                                            <a routerLink="/user/downloads">Downloads</a>
+                                            <a routerLink="/user/followers">Followers</a>
+                                            <a routerLink="/user/collections">Collections</a>
+                                        </div>
+                                        <div class="eachSection">
+                                            <a routerLink="/user/devices">Devices</a>
+                                            <a routerLink="/user/subscription">My Subscription</a>
+                                            <a routerLink="/user/support">Support</a>
+                                        </div>
+                                        <div class="eachSection">
+                                            <a href="javascript:void(0)" (click)="logout()">Logout</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </app-dropdown>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <div class="bottomCategories">
+        <div class="bodyCont">
+            <div class="categoriesCont d-flex">
+                <a *ngFor="let cat of categories" routerLink="/category/{{ cat?.cat_slug }}">{{ cat?.cat_name }}</a>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div id="authModal" [class.modalShow]="showModal.status">
+    <div class="closeModal" (click)="closeModal()"></div>
+    <div class="modalContent">
+        <div *ngIf="showModal.owner == 'login'" id="loginCont">
+            <app-login [isModal]="true" (closeModal)="closeModal()" (modalEv)="openModal($event)"></app-login>
+        </div>
+        <div *ngIf="showModal.owner == 'register'" id="registerCont">
+            <app-register [isModal]="true" (modalEv)="openModal($event)"></app-register>
+        </div>
+    </div>
+</div>

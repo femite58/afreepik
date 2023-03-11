@@ -1,0 +1,2 @@
+<app-guest-home *ngIf="!auth && pictures" [images]="pictures" (tabEv)="getCatPic($event)"></app-guest-home>
+<app-auth-home *ngIf="auth"></app-auth-home>

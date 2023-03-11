@@ -1,0 +1,109 @@
+<app-header></app-header>
+<section id="bannerSection">
+    <app-banner-carousel>
+        <div class="flexCont">
+            <div *ngFor="let ban of banners" class="carouselItem">
+                <div class="eachBanner">
+                    <img src="{{ban?.img}}" alt="">
+                    <div class="txtCont">
+                        <h1>{{ban?.title}}</h1>
+                        <h3>{{ban?.subtitle}}</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="carouselIndicators">
+            <div *ngFor="let ind of banners; let i = index" [class.cusActive]="i == 0" class="indicatorItem"></div>
+        </div>
+    </app-banner-carousel>
+</section>
+<section class="tabParent">
+    <div class="tabNav">
+        <a href="javascript:void(0)" (click)="switchTab('choice')" [class.tabActive]="activeTab == 'choice'" class="tabActive">Afreepik’s Choice</a>
+        <a href="javascript:void(0)" (click)="switchTab('photos')" [class.tabActive]="activeTab == 'photos'">Photos</a>
+        <a href="javascript:void(0)" (click)="switchTab('illustrations')" [class.tabActive]="activeTab == 'illustrations'">Illustrations</a>
+        <a href="javascript:void(0)" (click)="switchTab('cards')" [class.tabActive]="activeTab == 'cards'">Cards</a>
+    </div>
+    <div class="tabBody">
+        <div class="gridSystem">
+            <app-dynamic-grid [images]="images">
+                <app-each-pic *ngFor="let img of images; let i = index" [i]="i" [img]="img" [images]="images" (getDetEv)="getPicDetails($event, img, i, images)"></app-each-pic>
+            </app-dynamic-grid>
+        </div>
+        <div class="viewMoreCont">
+            <a routerLink="/category/all" class="primBtn">View more</a>
+        </div>
+    </div>
+</section>
+<section id="discoverCollections">
+    <div class="widthCtrl">
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="txtPart">
+                    <h4 class="headTitle">Discover Our Top Collections</h4>
+                    <p class="txtDesc">
+                        Support these creators by purchasing their monthly subscriptions, and get access to premium content:
+                    </p>
+                    <a routerLink="/">View all</a>
+                </div>
+            </div>
+            <div class="col-lg-9">
+                <div class="gridFlexParent">
+                    <div *ngFor="let each of slides" class="gridItem">
+                        <div class="eachItem">
+                            <a routerLink="/" class="imgGridCont">
+                                <div *ngFor="let img of each.images" class="eachImgCont">
+                                    <img src="{{img}}" alt="">
+                                </div>
+                            </a>
+                            <div class="txtCont">
+                                <h5 class="title"><a routerLink="/">{{each.title}}</a></h5>
+                                <div class="resource"><a routerLink="/">{{each.resources}} resources</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="popularSearches">
+    <div class="widthCtrl">
+        <h4 class="headTitle">Popular Searches</h4>
+        <ul class="gridCont">
+            <li><a routerLink="/">Background</a></li>
+            <li><a routerLink="/">Logo mockup</a></li>
+            <li><a routerLink="/">Business card</a></li>
+            <li><a routerLink="/">Mockup</a></li>
+            <li><a routerLink="/">Flyer</a></li>
+            <li><a routerLink="/">Banner</a></li>
+            <li><a routerLink="/">Business card mockup</a></li>
+            <li><a routerLink="/">Logo</a></li>
+            <li><a routerLink="/">Text effect</a></li>
+            <li><a routerLink="/">Poster</a></li>
+            <li><a routerLink="/">T shirt mockup</a></li>
+            <li><a routerLink="/">Certificate</a></li>
+            <li><a routerLink="/">Abstract background</a></li>
+            <li><a routerLink="/">Letterhead</a></li>
+            <li><a routerLink="/">Wedding invitation</a></li>
+        </ul>
+        <!-- <div class="linkCont text-center">
+            <a routerLink="/">View all <i class="fa fa-angle-right"></i></a>
+        </div> -->
+    </div>
+</section>
+<app-footer></app-footer>
+
+
+<div id="picDetailModal" [class.cusShow]="showModal">
+    <div class="closeModal" (click)="showModal = false"></div>
+    <div class="modalContent" #modalCont>
+        <app-picture-details [picDetails]="selPicDetails" (selPicEv)="outputDetails($event)"></app-picture-details>
+    </div>
+    <a href="javascript:void(0)" (click)="showNext($event, -1)" class="prev">
+        <i class="fa fa-angle-left"></i>
+    </a>
+    <a href="javascript:void(0)" (click)="showNext($event, 1)" class="next">
+        <i class="fa fa-angle-right"></i>
+    </a>
+</div>

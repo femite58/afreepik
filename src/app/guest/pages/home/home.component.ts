@@ -1,0 +1,360 @@
+import { Component, OnInit } from '@angular/core';
+import { PictureService } from 'src/app/data/services/picture.service';
+import { AuthService } from '../../../data/services/auth.service';
+
+@Component({
+  selector: 'app-home',
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.scss']
+})
+export class HomeComponent implements OnInit {
+  auth;
+  pictures = [
+    {
+      image: 'assets/images/1.png',
+      width: 326,
+      height: 330,
+      user: 'Alexandra Necula',
+      pid: 30,
+      downloads: 150,
+      likes: 200,
+      isLiked: 0,
+      photo: 'assets/images/user.png',
+      licence: 'Free',
+    },
+    {
+      image: 'assets/images/2.png',
+      width: 490,
+      height: 330,
+      user: 'Alexandra Necula',
+      pid: 31,
+      downloads: 150,
+      likes: 200,
+      isLiked: 0,
+      photo: 'assets/images/user.png',
+      licence: 'Free',
+    },
+    {
+      image: 'assets/images/3.png',
+      width: 490,
+      height: 330,
+      user: 'Alexandra Necula',
+      pid: 32,
+      downloads: 150,
+      likes: 200,
+      isLiked: 0,
+      photo: 'assets/images/user.png',
+      licence: 'Premium',
+    },
+    {
+      image: 'assets/images/4.png',
+      width: 502,
+      height: 330,
+      user: 'Alexandra Necula',
+      pid: 33,
+      downloads: 150,
+      likes: 200,
+      isLiked: 0,
+      photo: 'assets/images/user.png',
+      licence: 'Free',
+    },
+    {
+      image: 'assets/images/post-job.png',
+      width: 752,
+      height: 742,
+      user: 'Alexandra Necula',
+      pid: 34,
+      downloads: 150,
+      likes: 200,
+      isLiked: 0,
+      photo: 'assets/images/user.png',
+      licence: 'Premium',
+    },
+    {
+      image: 'assets/images/5.png',
+      width: 415,
+      height: 265,
+      user: 'Alexandra Necula',
+      pid: 35,
+      downloads: 150,
+      likes: 200,
+      isLiked: 0,
+      photo: 'assets/images/user.png',
+      licence: 'Free',
+    },
+    {
+      image: 'assets/images/6.png',
+      width: 508,
+      height: 265,
+      user: 'Alexandra Necula',
+      pid: 36,
+      downloads: 150,
+      likes: 200,
+      isLiked: 0,
+      photo: 'assets/images/user.png',
+      licence: 'Free',
+    },
+    {
+      image: 'assets/images/7.png',
+      width: 400,
+      height: 265,
+      user: 'Alexandra Necula',
+      pid: 37,
+      downloads: 150,
+      likes: 200,
+      isLiked: 0,
+      photo: 'assets/images/user.png',
+      licence: 'Free',
+    },
+    {
+      image: 'assets/images/8.png',
+      width: 482,
+      height: 265,
+      user: 'Alexandra Necula',
+      pid: 38,
+      downloads: 150,
+      likes: 200,
+      isLiked: 0,
+      photo: 'assets/images/user.png',
+      licence: 'Premium',
+    },
+    {
+      image: 'assets/images/9.png',
+      width: 498,
+      height: 328,
+      user: 'Alexandra Necula',
+      pid: 39,
+      downloads: 150,
+      likes: 200,
+      isLiked: 0,
+      photo: 'assets/images/user.png',
+      licence: 'Free',
+    },
+    {
+      image: 'assets/images/10.png',
+      width: 490,
+      height: 328,
+      user: 'Alexandra Necula',
+      pid: 40,
+      downloads: 150,
+      likes: 200,
+      isLiked: 0,
+      photo: 'assets/images/user.png',
+      licence: 'Free',
+    },
+
+    {
+      image: 'assets/images/11.png',
+      width: 488,
+      height: 328,
+      user: 'Alexandra Necula',
+      pid: 41,
+      downloads: 150,
+      likes: 200,
+      isLiked: 0,
+      photo: 'assets/images/user.png',
+      licence: 'Free',
+    },
+
+    {
+      image: 'assets/images/12.png',
+      width: 331,
+      height: 328,
+      user: 'Alexandra Necula',
+      pid: 42,
+      downloads: 150,
+      likes: 200,
+      isLiked: 0,
+      photo: 'assets/images/user.png',
+      licence: 'Free',
+    },
+    {
+      image: 'assets/images/1.png',
+      width: 326,
+      height: 330,
+      user: 'Alexandra Necula',
+      pid: 43,
+      downloads: 150,
+      likes: 200,
+      isLiked: 0,
+      photo: 'assets/images/user.png',
+      licence: 'Free',
+    },
+    {
+      image: 'assets/images/2.png',
+      width: 490,
+      height: 330,
+      user: 'Alexandra Necula',
+      pid: 44,
+      downloads: 150,
+      likes: 200,
+      isLiked: 0,
+      photo: 'assets/images/user.png',
+      licence: 'Free',
+    },
+    {
+      image: 'assets/images/river-surrounded-by-forests-cloudy-sky-thuringia-germany.png',
+      width: 1920,
+      height: 640,
+      user: 'Alexandra Necula',
+      pid: 45,
+      downloads: 150,
+      likes: 200,
+      isLiked: 0,
+      photo: 'assets/images/user.png',
+      licence: 'Free',
+    },
+    {
+      image: 'assets/images/3.png',
+      width: 490,
+      height: 330,
+      user: 'Alexandra Necula',
+      pid: 46,
+      downloads: 150,
+      likes: 200,
+      isLiked: 0,
+      photo: 'assets/images/user.png',
+      licence: 'Free',
+    },
+    {
+      image: 'assets/images/4.png',
+      width: 502,
+      height: 330,
+      user: 'Alexandra Necula',
+      pid: 47,
+      downloads: 150,
+      likes: 200,
+      isLiked: 0,
+      photo: 'assets/images/user.png',
+      licence: 'Free',
+    },
+    {
+      image: 'assets/images/5.png',
+      width: 415,
+      height: 265,
+      user: 'Alexandra Necula',
+      pid: 48,
+      downloads: 150,
+      likes: 200,
+      isLiked: 0,
+      photo: 'assets/images/user.png',
+      licence: 'Free',
+    },
+    {
+      image: 'assets/images/6.png',
+      width: 508,
+      height: 265,
+      user: 'Alexandra Necula',
+      pid: 49,
+      downloads: 150,
+      likes: 200,
+      isLiked: 0,
+      photo: 'assets/images/user.png',
+      licence: 'Free',
+    },
+    {
+      image: 'assets/images/7.png',
+      width: 400,
+      height: 265,
+      user: 'Alexandra Necula',
+      pid: 50,
+      downloads: 150,
+      likes: 200,
+      isLiked: 0,
+      photo: 'assets/images/user.png',
+      licence: 'Free',
+    },
+    {
+      image: 'assets/images/8.png',
+      width: 482,
+      height: 265,
+      user: 'Alexandra Necula',
+      pid: 51,
+      downloads: 150,
+      likes: 200,
+      isLiked: 0,
+      photo: 'assets/images/user.png',
+      licence: 'Premium',
+    },
+    {
+      image: 'assets/images/9.png',
+      width: 498,
+      height: 328,
+      user: 'Alexandra Necula',
+      pid: 52,
+      downloads: 150,
+      likes: 200,
+      isLiked: 0,
+      photo: 'assets/images/user.png',
+      licence: 'Free',
+    },
+    {
+      image: 'assets/images/10.png',
+      width: 490,
+      height: 328,
+      user: 'Alexandra Necula',
+      pid: 53,
+      downloads: 150,
+      likes: 200,
+      isLiked: 0,
+      photo: 'assets/images/user.png',
+      licence: 'Free',
+    },
+
+    {
+      image: 'assets/images/11.png',
+      width: 488,
+      height: 328,
+      user: 'Alexandra Necula',
+      pid: 54,
+      downloads: 150,
+      likes: 200,
+      isLiked: 0,
+      photo: 'assets/images/user.png',
+      licence: 'Free',
+    },
+
+    {
+      image: 'assets/images/12.png',
+      width: 331,
+      height: 328,
+      user: 'Alexandra Necula',
+      pid: 55,
+      downloads: 150,
+      likes: 200,
+      isLiked: 0,
+      photo: 'assets/images/user.png',
+      licence: 'Free',
+    },
+  ];;
+  cat = 'choice';
+
+  constructor(
+    private authService: AuthService,
+    private pictureService: PictureService
+  ) { }
+
+  ngOnInit(): void {
+    this.getAuth();
+    this.getPictures();
+  }
+
+  private getPictures() {
+    this.pictureService.getHomePics(this.cat).subscribe(res => {
+      console.log(res);
+      this.pictures = res;
+    });
+  }
+
+  getCatPic(cat) {
+    this.cat = cat;
+    this.getPictures();
+  }
+
+  private getAuth() {
+    this.authService.user.subscribe(auth => {
+      this.auth = auth;
+    })
+  }
+
+}

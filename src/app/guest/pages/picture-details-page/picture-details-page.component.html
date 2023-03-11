@@ -1,0 +1,16 @@
+<app-header></app-header>
+<app-picture-details [picDetails]="pagePicDetails" (selPicEv)="outputDetails($event)"></app-picture-details>
+<app-footer></app-footer>
+
+<div id="picDetailModal" [class.cusShow]="showModal">
+    <div class="closeModal" (click)="showModal = false"></div>
+    <div class="modalContent" #modalCont>
+        <app-picture-details [picDetails]="selPicDetails" (selPicEv)="outputDetails($event)"></app-picture-details>
+    </div>
+    <a href="javascript:void(0)" (click)="showNext($event, -1)" class="prev">
+        <i class="fa fa-angle-left"></i>
+    </a>
+    <a href="javascript:void(0)" (click)="showNext($event, 1)" class="next">
+        <i class="fa fa-angle-right"></i>
+    </a>
+</div>

@@ -1,0 +1,169 @@
+@import '../../../../themes/colors.scss';
+#pictures {
+    display: flex;
+    border-top: 1px solid #26262633;
+}
+
+.filterSideBar {
+    width: 250px;
+    min-width: 250px;
+    border-right: 1px solid #bfbfbfcc;
+}
+
+.filterSideBar>div {
+    padding: 27px 18px 27px 24px;
+    border-bottom: 1px solid #bfbfbfcc;
+    .headPart {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 15px;
+        h5 {
+            font-size: 16px;
+            font-weight: 600;
+            margin: 0;
+        }
+        .iconTxt {
+            display: flex;
+            align-items: center;
+            svg {
+                margin-right: 12px;
+            }
+        }
+    }
+}
+
+.pictureGridCont {
+    flex-grow: 1;
+    padding: 43px 27px 91px;
+    width: 200px;
+}
+
+.filterHead {
+    .leftIconTxt {
+        display: flex;
+        align-items: center;
+        h4 {
+            margin: 0;
+            margin-left: 18px;
+            font-weight: 600;
+            font-size: 20px;
+        }
+    }
+    .filterToggle {
+        cursor: pointer;
+    }
+}
+
+.clearFilters {
+    color: #1e1e1e80;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.clearFilters:hover {
+    color: #1e1e1e;
+}
+
+.filters {
+    display: flex;
+    flex-wrap: wrap;
+    .eachFilter {
+        margin-right: 6px;
+        margin-bottom: 6px;
+        font-size: 12px;
+        color: #fff;
+        background: $primary;
+        border-radius: 3px;
+        padding: 3px 6px;
+        span:not(.delFilter) {
+            margin-right: 12px;
+        }
+        .delFilter {
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 14px;
+        }
+    }
+}
+
+.radioItem {
+    input+label {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        padding: 5px 0;
+        margin: 0;
+        text-transform: capitalize;
+        .cusRadio {
+            border-radius: 50%;
+            border: 1px solid #1e1e1e;
+            margin-right: 9px;
+            height: 14px;
+            width: 14px;
+            min-width: 14px;
+        }
+        svg {
+            margin-right: 7px;
+        }
+    }
+    input:checked+label {
+        .cusRadio {
+            border-color: $primary;
+            border-width: 4px;
+        }
+    }
+}
+
+.eachFilterSec {
+    .headPart {
+        margin-bottom: 0 !important;
+        i {
+            transition: 0.3s ease;
+        }
+    }
+    .headPart.cusCollapsed {
+        i {
+            transform: rotate(-180deg);
+        }
+    }
+    .innerBody {
+        padding-top: 15px;
+    }
+}
+
+.noResource {
+    margin-bottom: 18px;
+    font-size: 18px;
+}
+
+#pagination {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-top: 74px;
+    font-size: 14px;
+    &>span:first-child {
+        margin-right: 6px;
+    }
+    .curPage {
+        min-width: 38px;
+        margin-right: 6px;
+        text-align: center;
+        border: 1px solid #00000033;
+        border-radius: 2px;
+    }
+    .of {
+        margin-right: 6px;
+    }
+    a {
+        background: $primary;
+        color: #fff;
+        border-radius: 2px;
+        text-align: center;
+        min-width: 26px;
+    }
+    a:last-child {
+        margin-left: 4px;
+    }
+}
